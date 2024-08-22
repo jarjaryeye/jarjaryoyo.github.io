@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthsary Game for You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe4e1;
+            flex-direction: column;
+        }
+        #game {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        #noBtn {
+            position: absolute;
+        }
+        h1 {
+            color: #ff1493;
+        }
+    </style>
+</head>
+<body>
+
+<div id="game">
+    <h1 id="question">Bat mo binuksan to tanga ka?</h1>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+</div>
+
+<script>
+    const questions = [
+        "HAHAHAHAHAHA eh masugnit ka ba?",
+        "Mhmmm Promise me susunod ka na sakin always?",
+        "Sakin ka na habang buhay ah?",
+        "Do you think about us every day?",
+        "Do you love me?",
+        "Do you want to spend the rest of your life with me?",
+        "Can you be my baby forever?",
+        "Will you stay with me forever?",
+        "Do you love me too?",
+        "Will you be mine forever and ever?"
+    ];
+
+    let currentQuestionIndex = 0;
+
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const questionEl = document.getElementById("question");
+
+    // Event listener for "Yes" button
+    yesBtn.addEventListener("click", () => {
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            questionEl.textContent = questions[currentQuestionIndex];
+        } else {
+            // Final message when all questions are answered
+            questionEl.textContent = "HAPPY 4TH MONTHSARY MY LOVE, thank you so much for everything, NAG ENJOY KA BA SA GINAWA KO, IS IT COOL!!! HAHAHHAHAHA. Anyways 4 months na tayo lab, still di ako makapaniwala na asawa kita, thank you love kasi pinag lalaban mo yung situation natin kahit mahirap and na aappreciate ko lahat ng ginagawa mo sakin. Malapit na lab magsasama na tayo and im so excited diko na to papahabain lab I LOVE YOU SO MUCH alam mo na yung iba mwa HAPPY MONTHSARY AGAIN I LOVE YOU";
+            yesBtn.style.display = "none";
+            noBtn.style.display = "none";
+        }
+    });
+
+    // Event listener for "No" button (moves to random position)
+    noBtn.addEventListener("click", () => {
+        const randomX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const randomY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.left = `${randomX}px`;
+        noBtn.style.top = `${randomY}px`;
+    });
+</script>
+
+</body>
+</html>
